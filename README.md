@@ -1,28 +1,12 @@
 # SynthMD: Synthetic Datasets for Software Development in Rare Disease Research
 
-SynthMD is a Python tool for generating realistic synthetic patient data for a wide range of diseases 
-without input datasets. The method leverages available statistics to create attribute distributions. 
+SynthMD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
 
-![](https://github.com/iaBIH/synth-md/blob/main/resources/RDsStats.png)
+![](https://github.com/BIH-MI/synthetic-rd-data/blob/main/resources/RDsStats.png)
 
-The tool is used to generate [synthetic datasets](https://github.com/iaBIH/synth-md/edit/main/rare_disease_datasets) with 187,709 patients for three popular rare diseases i.e. [Sickle Cell Disease](https://en.wikipedia.org/wiki/Sickle_cell_disease#:~:text=Sickle%20cell%20disease%20(SCD)%20is,like%20shape%20under%20certain%20circumstances.) (SCD, ORPHA code: 232), [Cystic Fibrosis](https://en.wikipedia.org/wiki/Cystic_fibrosis) (CF, ORPHA code: 586), and [Duchenne Muscular Dystrophy](https://en.wikipedia.org/wiki/Duchenne_muscular_dystrophy) (DMD, ORPHA code: 98896). 
-Each dataset has 10+ attributes including patient personal information and clinical parameters. 
+This repository contains code to use the tool for generating three [synthetic datasets](https://github.com/BIH-MI/synthetic-rd-data/edit/main/rare_disease_datasets) for three popular rare diseases i.e. [Sickle Cell Disease](https://en.wikipedia.org/wiki/Sickle_cell_disease) (SCD), [Cystic Fibrosis](https://en.wikipedia.org/wiki/Cystic_fibrosis) (CF), and [Duchenne Muscular Dystrophy](https://en.wikipedia.org/wiki/Duchenne_muscular_dystrophy) (DMD). The datasets contain demographic data and selected clinical parameters.
 
-![](https://github.com/iaBIH/synth-md/blob/main/resources/SampleData.png)
-
-The synthetic data follow the input census and disease statistics with high accuracy. 
-
-<p float="left">
-<img src="https://github.com/iaBIH/synth-md/blob/main/resources/result_Gender.png" width="400">
-<img src="https://github.com/iaBIH/synth-md/blob/main/resources/result_Race.png" width="400">
-<img src="https://github.com/iaBIH/synth-md/blob/main/resources/result_Age.png" width="400">
-</p>
-
-### Citation: 
-
-This tool and the datasets are described in this paper: [Synthetic Datasets for Software Development in Rare Disease Research]() (to be published). 
-
-### Features:
+### Features
 
  * No need for input datasets (only basic statistics are needed).
  * Very fast, can generate thousands of synthetic patient data in a few seconds.
@@ -30,7 +14,7 @@ This tool and the datasets are described in this paper: [Synthetic Datasets for 
  * Adding a new disease is simply done by modifying a JSON file (see the sections below).
  * The synthetic data follow the input census and disease statistics with high accuracy. 
 
-## Repository Structure:
+## Repository Structure
 
                 ├── RDdata: Contains our results and copy of all original downloaded and used files 
                 │   ├── census
