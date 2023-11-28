@@ -6,14 +6,6 @@ SynthMD is a Python tool for generating synthetic patient data to support softwa
 
 This repository contains code to use the tool for generating three [synthetic datasets](https://github.com/BIH-MI/synthetic-rd-data/tree/main/RDdata/result) for three popular rare diseases i.e. [Sickle Cell Disease](https://en.wikipedia.org/wiki/Sickle_cell_disease) (SCD), [Cystic Fibrosis](https://en.wikipedia.org/wiki/Cystic_fibrosis) (CF), and [Duchenne Muscular Dystrophy](https://en.wikipedia.org/wiki/Duchenne_muscular_dystrophy) (DMD). The datasets contain demographic data and selected clinical parameters.
 
-### Features
-
- * No need for input datasets (only basic statistics are needed).
- * Very fast, can generate thousands of synthetic patient data in a few seconds.
- * Can generate synthetic data for a single disease or multiple diseases at the same time.
- * Adding a new disease is simply done by modifying a JSON file (see the sections below).
- * The synthetic data follow the input census and disease statistics with high accuracy. 
-
 ## Repository Structure
 
                 ├── RDdata: Contains our results and copy of all original downloaded and used files 
@@ -49,37 +41,27 @@ This repository contains code to use the tool for generating three [synthetic da
 
 ## Installation: 
   
-  1. To import the U.S.A census data, one needs to get API key from here: https://api.census.gov/data/key_signup.html after that the key will be submitted to the email and needs activation. Some census variables may need updating. Check the census website for details and modify the MDimport file if necessary (or open a new issue and we will update them).
+1. To import the US census data, an API key needs to be obtained from [here](https://api.census.gov/data/key_signup.html). Check the census website for details and modify the MDimport file if necessary.
 
-  2. Download and install SynthMD: 
+2. Download and install SynthMD: 
 
-              git clone https://github.com/iaBIH/synth-md.git
+              git clone https://github.com/BIH-MI/synthetic-rd-data/synth-md.git
               cd synth-md
               pip install . --user 
 
-
-## Example:
-
-   The provided [example](https://github.com/iaBIH/synth-md/blob/main/example.py) file shows how to use the tool: 
-
-   1. Get a census API from https://api.census.gov/data/key_signup.html
-   2. Replace 'None' by your census API in this [line](https://github.com/iaBIH/synth-md/blob/73abf642d45b895a608644c3728bc1730dd8d770/example.py#L5) in the example:
+3. Replace 'None' by your census API in this [line](https://github.com/iaBIH/synth-md/blob/73abf642d45b895a608644c3728bc1730dd8d770/example.py#L5) in the example script:
       
-              censusAPIKey= None 
-
-   3. Run the following lines in your terminal
+4. Execute the code
 
              cd synth-md
              python example.py
     
-      The downloaded files from census will be saved in datasets folder. The generated synthetic datasets will be saved in output folder.
+The downloaded US census files will be saved in the datasets folder. The generated synthetic datasets will be saved in output folder.
 
-## Generating synthetic data for a new disease:
+## Extending the code
 
-  To add a new disease using its statistics related to the U.S.A, 
-  modify the file [RDsDataUSA.json](https://github.com/iaBIH/synth-md/blob/main/config/RDsDataUSA.json) and create a new disease similar to the ones available 
-  e.g. copy/paste one of the diseases and change the values: 
-  
+To extend the scripts to generate data for a new rare disease modify the file [RDsDataUSA.json](https://github.com/BIH-MI/synthetic-rd-data/blob/main/config/RDsDataUSA.json) and create a new disease configuration similar to the ones already included:
+
                   {
                   "RDID": 4,
                   "orphanet_code": 44444,
@@ -140,26 +122,20 @@ This repository contains code to use the tool for generating three [synthetic da
                   }
                 
 
-  To add a new disease for a different country/area, you should create a new config file similar to 
-  [config/configUSA.json](https://github.com/iaBIH/synth-md/blob/main/config/configUSA.json) and use it. In the new config file, you should provide census data with the 
-  same format as the one provided for the U.S.A:
+  If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/iaBIH/synth-md/blob/main/config/configUSA.json). Information that needs to be provided:
      
      - states-race_ext.csv: race information 
      - states-age-sex: age and sex information for male, female and both
 
-  Modify [example.py](https://github.com/iaBIH/synth-md/blob/main/example.py) and disable import, preparation (the evaluation part is optional) e.g. 
+  Modify [example.py](https://github.com/iaBIH/synth-md/blob/main/example.py) and disable the steps import and preparation, e.g.:
 
         doImport     = 0
         doPrepare    = 0
         doCreate     = 1 
         doEvaluation = 1    
   
-  After that, you can use RDcreate.py to create the synthetic data as shown in the section above.  
-  You can also automate the process by importing the census data directly but you will have to modify the files
-  RDimport and RDprepare.
+  After that, you can use RDcreate.py to create synthetic data using the newly provided statistics.
 
-
-  
 ## License
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
