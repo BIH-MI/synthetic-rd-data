@@ -8,36 +8,36 @@ This repository contains code to use the tool for generating three [synthetic da
 
 ## Repository Structure
 
-                ├── RDdata: Contains our results and copy of all original downloaded and used files 
-                │   ├── census
-                │   │   ├── map
-                │   │   └── usaAge2020-2021
-                │   └── result
-                │       ├── cf_patients_all_32093.csv
-                │       ├── dmd_patients_all_55219.csv
-                │       └── scd_patients_all_100403.csv
-                ├── config: configuration files
-                │   ├── configUSA.json
-                │   └── RDsDataUSA.json
-                ├── datasets: All downloaded census and preprocessed files will be saved here
-                │       ├── map: required for map charts
-                ├── output: All generated datasets will be saved here when run the tool 
-                ├── LICENSE.txt
-                ├── README.md
-                ├── example.py: An example to show how to use the tool after installation
-                ├── requirements.txt
-                ├── resources: Images used in this Readme file.
-                ├── setup.py: Setup file 
-                └── synthMD: Source code
-                   ├── __init__.py
-                   ├── LICENSE.txt
-                   ├── MDcharts.py: Charting 
-                   ├── MDcreate.py: Synthetic data generation
-                   ├── MDevaluate.py: Evaluation 
-                   ├── MDimport.py: Importing data from census 
-                   ├── MDprepare.py: Preprocessing 
-                   ├── MDutils.py: Utilities 
-                   └── synthMD.py: Setup                
+├── RDdata: Contains our results and copy of all original downloaded and used files 
+│   ├── census
+│   │   ├── map
+│   │   └── usaAge2020-2021
+│   └── result
+│       ├── cf_patients_all_32093.csv
+│       ├── dmd_patients_all_55219.csv
+│       └── scd_patients_all_100403.csv
+├── config: configuration files
+│   ├── configUSA.json
+│   └── RDsDataUSA.json
+├── datasets: All downloaded census and preprocessed files will be saved here
+│       ├── map: required for map charts
+├── output: All generated datasets will be saved here when run the tool 
+├── LICENSE.txt
+├── README.md
+├── example.py: An example to show how to use the tool after installation
+├── requirements.txt
+├── resources: Images used in this Readme file.
+├── setup.py: Setup file 
+└── synthMD: Source code
+   ├── __init__.py
+   ├── LICENSE.txt
+   ├── MDcharts.py: Charting 
+   ├── MDcreate.py: Synthetic data generation
+   ├── MDevaluate.py: Evaluation 
+   ├── MDimport.py: Importing data from census 
+   ├── MDprepare.py: Preprocessing 
+   ├── MDutils.py: Utilities 
+   └── synthMD.py: Setup
 
 ## Installation: 
   
@@ -45,16 +45,16 @@ This repository contains code to use the tool for generating three [synthetic da
 
 2. Download and install SynthMD: 
 
-              git clone https://github.com/BIH-MI/synthetic-rd-data/synth-md.git
-              cd synth-md
-              pip install . --user 
+git clone https://github.com/BIH-MI/synthetic-rd-data/synth-md.git
+cd synth-md
+pip install . --user 
 
 3. Replace 'None' by your census API in this [line](https://github.com/iaBIH/synth-md/blob/73abf642d45b895a608644c3728bc1730dd8d770/example.py#L5) in the example script:
       
 4. Execute the code
 
-             cd synth-md
-             python example.py
+cd synth-md
+python example.py
     
 The downloaded US census files will be saved in the datasets folder. The generated synthetic datasets will be saved in output folder.
 
@@ -62,65 +62,65 @@ The downloaded US census files will be saved in the datasets folder. The generat
 
 To extend the scripts to generate data for a new rare disease modify the file [RDsDataUSA.json](https://github.com/BIH-MI/synthetic-rd-data/blob/main/config/RDsDataUSA.json) and create a new disease configuration similar to the ones already included:
 
-                  {
-                  "RDID": 4,
-                  "orphanet_code": 44444,
-                  "short_name": "d4",
-                  "name": "Disease Name",
-                  "number_of_patients":  {
-                    "nump_value": 1000,
-                    "note":"NA: computed based on population and prevalence",
-                    "refs":[""]  
-                  },   
-                  "prevalence":       {
-                    "pr_value": 0.0001,
-                    "note":"",
-                    "refs":[""]  
-                  },   
-                  "race_percentage":{
-                    "races": {
-                        "African-American,AA": 30.0,
-                        "European-American,EA": 30.0,
-                        "Others,OA": 10.0
-                      },
-                      "refs":[""]        
-                  },
-                  "diagnosis_dates":{
-                      "dg_min_days":30,
-                      "dg_max_days":90,
-                      "note":"how many days after birth until diagnostic, 1-3 years",
-                      "refs":[""]     
-                  },
-                  "sex_percentage":{
-                    "male": 20.0,
-                    "female": 80.0,
-                    "note": "",
-                    "refs":[""]     
-                  },
-                  "death_percentage": {
-                    "rates":{
-                        "0-4":   0.0,
-                        "5-14":  0.0,
-                        "15-19": 0.0,
-                        "20-24": 0.0,
-                        "25-39": 0.0,
-                        "40-60": 0.7,
-                        "61-99": 30.0
-                      },
-                      "note":"",
-                      "refs":[""]        
-                  },
-                  "clinical_parameters": [
-                    {
-                      "cp_name": "CP",
-                      "cp_unit": "unit/L",
-                      "cp_min_value": 10,
-                      "cp_max_value": 50,
-                      "refs":[""]            
-                    }
-                  ]
-                  }
-                
+  {
+  "RDID": 4,
+  "orphanet_code": 44444,
+  "short_name": "d4",
+  "name": "Disease Name",
+  "number_of_patients":  {
+    "nump_value": 1000,
+    "note":"NA: computed based on population and prevalence",
+    "refs":[""]  
+  },   
+  "prevalence":       {
+    "pr_value": 0.0001,
+    "note":"",
+    "refs":[""]  
+  },   
+  "race_percentage":{
+    "races": {
+        "African-American,AA": 30.0,
+        "European-American,EA": 30.0,
+        "Others,OA": 10.0
+      },
+      "refs":[""]        
+  },
+  "diagnosis_dates":{
+      "dg_min_days":30,
+      "dg_max_days":90,
+      "note":"how many days after birth until diagnostic, 1-3 years",
+      "refs":[""]     
+  },
+  "sex_percentage":{
+    "male": 20.0,
+    "female": 80.0,
+    "note": "",
+    "refs":[""]     
+  },
+  "death_percentage": {
+    "rates":{
+        "0-4":   0.0,
+        "5-14":  0.0,
+        "15-19": 0.0,
+        "20-24": 0.0,
+        "25-39": 0.0,
+        "40-60": 0.7,
+        "61-99": 30.0
+      },
+      "note":"",
+      "refs":[""]        
+  },
+  "clinical_parameters": [
+    {
+      "cp_name": "CP",
+      "cp_unit": "unit/L",
+      "cp_min_value": 10,
+      "cp_max_value": 50,
+      "refs":[""]            
+    }
+  ]
+  }
+
 
   If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/iaBIH/synth-md/blob/main/config/configUSA.json). Information that needs to be provided:
      
@@ -129,10 +129,10 @@ To extend the scripts to generate data for a new rare disease modify the file [R
 
   Modify [example.py](https://github.com/iaBIH/synth-md/blob/main/example.py) and disable the steps import and preparation, e.g.:
 
-        doImport     = 0
-        doPrepare    = 0
-        doCreate     = 1 
-        doEvaluation = 1    
+  doImport     = 0
+  doPrepare    = 0
+  doCreate     = 1 
+  doEvaluation = 1    
   
   After that, you can use RDcreate.py to create synthetic data using the newly provided statistics.
 
