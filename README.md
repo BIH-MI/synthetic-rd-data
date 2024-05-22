@@ -56,7 +56,7 @@ To import US Census data, you'll need an API key:
               pip install . --user 
               
 ### 3. Insert Your Census API Key
-Replace 'None' with your Census API key in the example script in this [line](https://github.com/AbuAttieh/synthetic-rd-data/blob/patch-1/example.py#L5).
+Replace 'None' with your Census API key in the example script in this [line](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py#L5).
 Note that it must be inserted as a string!
       
 ### 4. Execute the code
@@ -133,12 +133,12 @@ To extend the scripts to generate data for a new rare disease modify the file [R
                   }
                 
 
-  If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/iaBIH/synth-md/blob/main/config/configUSA.json). Information that needs to be provided:
+  If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/BIH-MI/synthetic-rd-data/blob/main/config/configUSA.json). Information that needs to be provided:
      
      - states-race_ext.csv: race information 
      - states-age-sex: age and sex information for male, female and both
 
-  Modify [example.py](https://github.com/iaBIH/synth-md/blob/main/example.py) and disable the steps import and preparation, e.g.:
+  Modify [example.py](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py) and disable the steps import and preparation, e.g.:
 
         doImport     = 0
         doPrepare    = 0
