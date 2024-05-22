@@ -1,4 +1,4 @@
-# SynthMD: Synthetic Datasets for Software Development in Rare Disease Research
+# SynthRD: Synthetic Datasets for Software Development in Rare Disease Research
 
 SynthRD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
 
