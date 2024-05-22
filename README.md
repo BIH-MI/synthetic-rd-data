@@ -134,9 +134,9 @@ To extend the scripts to generate data for a new rare disease modify the file [R
                 
 
   If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/BIH-MI/synthetic-rd-data/blob/main/config/configUSA.json). Information that needs to be provided:
-     
-     - states-race_ext.csv: race information 
-     - states-age-sex: age and sex information for male, female and both
+  
+- **states-race_ext.csv:** race information
+- **states-age-sex:** age and sex information for male, female and both
 
   Modify [example.py](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py) and disable the steps import and preparation, e.g.:
 
