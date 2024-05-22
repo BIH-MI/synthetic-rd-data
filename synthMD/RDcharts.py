@@ -1,7 +1,7 @@
 import sys, os, time
 import matplotlib.pyplot as plt, numpy as np, geopandas as gpd, pandas as pd 
 import matplotlib.patheffects as PathEffects
-from synthMD import MDutils 
+from synthRD import RDutils 
 
 # saving chart data to csv file for external processing if needed
 def saveChartData(inputData,figPath):
