@@ -1,6 +1,6 @@
 # SynthMD: Synthetic Datasets for Software Development in Rare Disease Research
 
-SynthMD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
+SynthRD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
 
 ![](https://github.com/BIH-MI/synthetic-rd-data/blob/main/resources/RDsStats.png)
 
@@ -28,16 +28,16 @@ This repository contains code to use the tool for generating three [synthetic da
                 ├── requirements.txt
                 ├── resources: Images used in this Readme file.
                 ├── setup.py: Setup file 
-                └── synthMD: Source code
+                └── synthRD: Source code
                    ├── __init__.py
                    ├── LICENSE.txt
-                   ├── MDcharts.py: Charting 
-                   ├── MDcreate.py: Synthetic data generation
-                   ├── MDevaluate.py: Evaluation 
-                   ├── MDimport.py: Importing data from census 
-                   ├── MDprepare.py: Preprocessing 
-                   ├── MDutils.py: Utilities 
-                   └── synthMD.py: Setup                
+                   ├── RDcharts.py: Charting 
+                   ├── RDcreate.py: Synthetic data generation
+                   ├── RDevaluate.py: Evaluation 
+                   ├── RDimport.py: Importing data from census 
+                   ├── RDprepare.py: Preprocessing 
+                   ├── RDutils.py: Utilities 
+                   └── synthRD.py: Setup                
 
 ## Installation Guide
 
@@ -46,10 +46,10 @@ Follow these steps to set up SynthRD and start generating synthetic datasets.
 ### 1. Obtain Your Census API Key
 To import US Census data, you'll need an API key:
 - Visit the [Census API Signup Page](https://api.census.gov/data/key_signup.html) to get your API key. Check the Census website for any additional details.
-- (Modify the `MDimport` file if necessary to accommodate specific requirements.)
+- (Modify the `RDimport` file if necessary to accommodate specific requirements.)
 - You will receive the API key by e-mail.
 
-### 2. Download and Install SynthMD
+### 2. Download and Install SynthRD
 
               git clone https://github.com/BIH-MI/synthetic-rd-data.git
               cd synthetic-rd-data
