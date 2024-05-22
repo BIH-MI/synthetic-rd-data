@@ -9,7 +9,7 @@ import csv, json, sys, os, time
 import numpy as np
 from scipy.optimize import minimize
 
-from synthMD import MDutils, MDcharts
+from synthRD import RDutils, RDcharts
 
 
 def getRaceData(cfg, raceDataFilePath):
