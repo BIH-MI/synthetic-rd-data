@@ -138,7 +138,7 @@ To extend the scripts to generate data for a new rare disease modify the file [R
 - **states-race_ext.csv:** race information
 - **states-age-sex:** age and sex information for male, female and both
 
-  Modify [example.py](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py) and disable the steps import and preparation, e.g.:
+Modify [example.py](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py) and disable the steps import and preparation, e.g.:
 
         doImport     = 0
         doPrepare    = 0
