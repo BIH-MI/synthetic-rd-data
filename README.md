@@ -56,7 +56,7 @@ To import US Census data, you'll need an API key:
               pip install . --user 
               
 ### 3. Insert Your Census API Key
-Replace 'None' with your Census API key in the example script in this [line](https://github.com/iaBIH/synth-md/blob/73abf642d45b895a608644c3728bc1730dd8d770/example.py#L5).
+Replace 'None' with your Census API key in the example script in this [line](https://github.com/AbuAttieh/synthetic-rd-data/blob/patch-1/example.py#L5).
 Note that it must be inserted as a string!
       
 ### 4. Execute the code
