@@ -17,7 +17,7 @@
 import os, sys, csv, json, requests, urllib, time
 import pandas as pd
 
-from synthMD import MDutils
+from synthRD import RDutils
 
 ## -------------------------  Get Race populations using USA census API
 def getUSACensusDataRace(censusAPIKey, censusQueryYear=None, censusXLSXYear=None, forceDownload=None,
