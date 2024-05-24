@@ -131,7 +131,7 @@ def getUSACensusData(censusAPIKey, datasetFolder, censusQueryYear=None, censusXL
 
     # Get USA state IDs and names
     # IDs and short names are useful to work with API and other libs
-    usaFIPS, usaSNames, usaLNames  = MDutils.getUSAstateNames() 
+    usaFIPS, usaSNames, usaLNames  = RDutils.getUSAstateNames() 
  
     if getRaceData and not os.path.exists(race_data_path):        
        getUSACensusDataRace(censusAPIKey,censusQueryYear, censusXLSXYear, forceDownload,usaFIPS,race_data_path,
