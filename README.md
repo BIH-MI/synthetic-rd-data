@@ -68,6 +68,7 @@ Run the example script to start the data generation process.
 - **Downloaded US Census files:** `datasets` folder.
 - **Generated synthetic datasets:** `output` folder.
 
+You can find three generated example files here: [Example files](https://github.com/BIH-MI/synthetic-rd-data/blob/main/output).
 
 ## Extending the code
 
