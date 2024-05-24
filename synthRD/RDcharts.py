@@ -166,7 +166,7 @@ def getFreqFromList(data, isPercentageOutput=None):
 # Function to plot patient charts
 def plotPatientsCharts(p, dataLabels, dataArray, chartFolderPath, rdSName,statesLabels,  rd_datasset_size, isPercentageOutput):
 
-            statesIDs, statesSName, statesLName =  MDutils.getUSAstateNames()
+            statesIDs, statesSName, statesLName =  RDutils.getUSAstateNames()
             L =  [x[p] for x in dataArray if not x[p] is None ]
             L =  L if not p in[6,7,8] else [x for x in L if x !=0  ]
 
@@ -246,13 +246,13 @@ def plotDeathCharts(p, dataArray, sexLabels, racelabels, isPercentageOutput, max
 
         # Death per: age, state, sex, race      
         Y1 = [len([x for x in dataArray if (x[8] not in (None, 0)) and (x[1]==a)])  for a in range(maxUSAAge+1)]
-        Y2 = [len([x for x in dataArray if (x[8] not in (None, 0)) and (x[2]==a)])  for a in MDutils.getUSAstateNames()[2]]       
+        Y2 = [len([x for x in dataArray if (x[8] not in (None, 0)) and (x[2]==a)])  for a in RDutils.getUSAstateNames()[2]]       
         Y3 = [len([x for x in dataArray if (x[8] not in (None, 0)) and (x[4]==a)])  for a in sexLst]
         Y4 = [len([x for x in dataArray if (x[8] not in (None, 0)) and (x[5]==a)])  for a in raceNamesLst]
         deathPlots = [Y1,Y2,Y3, Y4]
         # TODO: move to json config file
         deathPlotsLabels= ["DeathAge","DeathState","DeathSex","DeathRace"]
-        XticksLabelsLst = [list(range(len(Y1))), MDutils.getUSAstateNames()[1], sexLst, raceNamesLst]
+        XticksLabelsLst = [list(range(len(Y1))), RDutils.getUSAstateNames()[1], sexLst, raceNamesLst]
 
         for Y,pltTitle, XticksLabels in zip(deathPlots, deathPlotsLabels, XticksLabelsLst): 
             Y = [ x/sum(Y)*100 for x in Y] if isPercentageOutput else Y
@@ -269,7 +269,7 @@ def plotDeathCharts(p, dataArray, sexLabels, racelabels, isPercentageOutput, max
             rotation= 60 if len(X)>50 else 0   
             
             if (len(X)!=  len(XticksLabels)):
-               XticksLabels=  MDutils.getUSAstateNames()[1]  
+               XticksLabels=  RDutils.getUSAstateNames()[1]  
 
             plt.xticks(Xticks, fontsize=8, rotation=rotation, labels=XticksLabels)
             plt.bar(X,Y)
@@ -292,12 +292,12 @@ def plotRareDiseaseData(fnm, sexLabels, racelabels, isPercentageOutput=None):
         chartFolderPath, csvFnm = os.path.split(fnm) # os.path.dirname(fnm)
         rdSName =  csvFnm.split("_")[0]
 
-        statesLabels = MDutils.getUSAstateNames()[1]
+        statesLabels = RDutils.getUSAstateNames()[1]
 
         #----------------------------------------------
         print("Reading input CSV files ..............")
         #----------------------------------------------
-        maxUSAAge, dataLabels, dataArray =  MDutils.readingCSVdata(fnm, 0)
+        maxUSAAge, dataLabels, dataArray =  RDutils.readingCSVdata(fnm, 0)
 
         rd_datasset_size = len(dataArray)
 
