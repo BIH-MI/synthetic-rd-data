@@ -1,6 +1,6 @@
-# SynthMD: Synthetic Datasets for Software Development in Rare Disease Research
+# SynthRD: Synthetic Datasets for Software Development in Rare Disease Research
 
-SynthMD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
+SynthRD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
 
 ![](https://github.com/BIH-MI/synthetic-rd-data/blob/main/resources/RDsStats_v5_gray.png)
 
@@ -28,35 +28,46 @@ This repository contains code to use the tool for generating three [synthetic da
                 ├── requirements.txt
                 ├── resources: Images used in this Readme file.
                 ├── setup.py: Setup file 
-                └── synthMD: Source code
+                └── synthRD: Source code
                    ├── __init__.py
                    ├── LICENSE.txt
-                   ├── MDcharts.py: Charting 
-                   ├── MDcreate.py: Synthetic data generation
-                   ├── MDevaluate.py: Evaluation 
-                   ├── MDimport.py: Importing data from census 
-                   ├── MDprepare.py: Preprocessing 
-                   ├── MDutils.py: Utilities 
-                   └── synthMD.py: Setup                
+                   ├── RDcharts.py: Charting 
+                   ├── RDcreate.py: Synthetic data generation
+                   ├── RDevaluate.py: Evaluation 
+                   ├── RDimport.py: Importing data from census 
+                   ├── RDprepare.py: Preprocessing 
+                   ├── RDutils.py: Utilities 
+                   └── synthRD.py: Setup                
 
-## Installation: 
+## Installation Guide
+
+Follow these steps to set up SynthRD and start generating synthetic datasets.
   
-1. To import the US census data, an API key needs to be obtained from [here](https://api.census.gov/data/key_signup.html). Check the census website for details and modify the MDimport file if necessary.
+### 1. Obtain Your Census API Key
+To import US Census data, you'll need an API key:
+- Visit the [Census API Signup Page](https://api.census.gov/data/key_signup.html) to get your API key. Check the Census website for any additional details.
+- (Modify the `RDimport` file if necessary to accommodate specific requirements.)
+- You will receive the API key by e-mail.
 
-2. Download and install SynthMD: 
+### 2. Download and Install SynthRD
 
-              git clone https://github.com/BIH-MI/synthetic-rd-data/synth-md.git
-              cd synth-md
+              git clone https://github.com/BIH-MI/synthetic-rd-data.git
+              cd synthetic-rd-data
               pip install . --user 
-
-3. Replace 'None' by your census API in this [line](https://github.com/iaBIH/synth-md/blob/73abf642d45b895a608644c3728bc1730dd8d770/example.py#L5) in the example script:
+              
+### 3. Insert Your Census API Key
+Replace 'None' with your Census API key in the example script in this [line](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py#L5).
+Note that it must be inserted as a string!
       
-4. Execute the code
+### 4. Execute the code
+Run the example script to start the data generation process.
 
-             cd synth-md
              python example.py
     
-The downloaded US census files will be saved in the datasets folder. The generated synthetic datasets will be saved in output folder.
+### File Locations
+- **Downloaded US Census files:** `datasets` folder.
+- **Generated synthetic datasets:** `output` folder.
+
 
 ## Extending the code
 
@@ -122,12 +133,12 @@ To extend the scripts to generate data for a new rare disease modify the file [R
                   }
                 
 
-  If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/iaBIH/synth-md/blob/main/config/configUSA.json). Information that needs to be provided:
-     
-     - states-race_ext.csv: race information 
-     - states-age-sex: age and sex information for male, female and both
+  If you want to add statistics about a new geography, create a new config file similar to [config/configUSA.json](https://github.com/BIH-MI/synthetic-rd-data/blob/main/config/configUSA.json). Information that needs to be provided:
+  
+- **states-race_ext.csv:** race information
+- **states-age-sex:** age and sex information for male, female and both
 
-  Modify [example.py](https://github.com/iaBIH/synth-md/blob/main/example.py) and disable the steps import and preparation, e.g.:
+Modify [example.py](https://github.com/BIH-MI/synthetic-rd-data/blob/main/example.py) and disable the steps import and preparation, e.g.:
 
         doImport     = 0
         doPrepare    = 0
@@ -138,8 +149,6 @@ To extend the scripts to generate data for a new rare disease modify the file [R
 
 ## License
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

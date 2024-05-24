@@ -6,7 +6,7 @@
 import sys, os, time, re
 import numpy as np
 from fractions import Fraction as frac
-from synthMD import MDutils, MDcharts  
+from synthRD import RDutils, RDcharts  
 
 #----------------- Printing with exception handling ----------------------
 def tryPrint(txt, L, dx, vs=None, roundPlaces=None):
