@@ -324,6 +324,7 @@ def plotRareDiseaseData(fnm, sexLabels, racelabels, isPercentageOutput=None):
         print("Preprocessing time for plotting = ", endTm, " seconds")
         print("-------------------  Plotting done! -------------------------")
 
+# Main script execution
 if __name__ == "__main__":
     if len(sys.argv) > 1:
        fnm = sys.argv[1]
