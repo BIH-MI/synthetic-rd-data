@@ -127,7 +127,7 @@ def getAgeGroupsEvaluation(i, outputData, agePopulationsStatesAll, pAll,totalUSA
     for k in range(len(rdAgeGroupsLst)):
 
         # Number of patients in age group k
-        L = [x for x in outputData[1:] if MDutils.getAgeGroupIndex(x[1])==k ]
+        L = [x for x in outputData[1:] if RDutils.getAgeGroupIndex(x[1])==k ]
         logLine = tryPrint(" Age groups  "+rdAgeGroupsLst[k]+"\t" , L , pAll, round((agePopulationsSum[k]/totalUSA)*100, roundPlaces) , roundPlaces )
         logLines.append(logLine )
 
@@ -139,7 +139,7 @@ def getAgeGroupsEvaluation(i, outputData, agePopulationsStatesAll, pAll,totalUSA
     for k in range(len(rdAgeGroupsLst)):
 
         # Number of female patients in age group k
-        L = [x for x in outputData[1:] if MDutils.getAgeGroupIndex(x[1])==k and x[4]=='f']        
+        L = [x for x in outputData[1:] if RDutils.getAgeGroupIndex(x[1])==k and x[4]=='f']        
         logLine = tryPrint(" Age groups  "+rdAgeGroupsLst[k]+"\t" , L , pAll, round((agePopulationsFSum[k]/totalUSA)*100, roundPlaces) , roundPlaces )
         logLines.append(logLine )
 
@@ -151,7 +151,7 @@ def getAgeGroupsEvaluation(i, outputData, agePopulationsStatesAll, pAll,totalUSA
     for k in range(len(rdAgeGroupsLst)):
 
         # Number of male patients in age group k
-        L = [x for x in outputData[1:] if MDutils.getAgeGroupIndex(x[1])==k and x[4]=='m']        
+        L = [x for x in outputData[1:] if RDutils.getAgeGroupIndex(x[1])==k and x[4]=='m']        
         logLine = tryPrint(" Age groups  "+rdAgeGroupsLst[k]+"\t" , L , pAll, round((agePopulationsMSum[k]/totalUSA)*100, roundPlaces) , roundPlaces )
         logLines.append(logLine )
     
@@ -178,10 +178,10 @@ def getDeathGroupsEvaluation(i, outputData, deathRates, statePatientsDeads, stat
     for k in range(len(rdAgeGroupsLst)):
         # Total population of age group k
         groupPopulation                = agePopulationsSum[k]
-        numberOfPatientsPerGroup       = len([x for x in outputData[1:] if MDutils.getAgeGroupIndex(x[1])==k ])
+        numberOfPatientsPerGroup       = len([x for x in outputData[1:] if RDutils.getAgeGroupIndex(x[1])==k ])
 
         # Number of dead patients in age group k
-        numberOfPatientsPerGroupDead = len([x for x in outputData[1:] if MDutils.getAgeGroupIndex(x[1]) == k and x[8] not in (None, 0)])
+        numberOfPatientsPerGroupDead = len([x for x in outputData[1:] if RDutils.getAgeGroupIndex(x[1]) == k and x[8] not in (None, 0)])
 
         # Expected number of dead patients based on ground truth data
         numAgeDeadPtGT   =  int(statePatientsDeadsSum[k])
@@ -309,12 +309,12 @@ def getEvaluation(i, RDnamesLst, rd_datasset_size, outputData, totalNumberOfPati
 
         # Plotting the results
         if doPlot:
-           MDcharts.plotRareDiseaseData(resultFilePath, sexlabels, raceLabels)
+           RDcharts.plotRareDiseaseData(resultFilePath, sexlabels, raceLabels)
 
 def getAllEvaluation(cfgPath):
 # Performs the full evaluation for all rare diseases based on the configuration files
     
-    cfg, RDsData, raceData, usaAgeSexData, usaAgeSexGroupData, paths = MDutils.readInputFiles(cfgPath)
+    cfg, RDsData, raceData, usaAgeSexData, usaAgeSexGroupData, paths = RDutils.readInputFiles(cfgPath)
 
     usaAgeSexDataFilesPath, resultsFolderPath= paths
 
@@ -322,12 +322,12 @@ def getAllEvaluation(cfgPath):
     RDFileNamesLst    = [x["short_name"]    for x in RDsData]
     rd_datasset_size  = cfg["rd_datasset_size"]["rd_dataset_size_value"]
 
-    raceWeights, total_USA_Population_From_Race, prevalenceRaceLst, racePopulations, racePopulationsSt  = MDutils.getRaceData(raceData, RDsData) 
+    raceWeights, total_USA_Population_From_Race, prevalenceRaceLst, racePopulations, racePopulationsSt  = RDutils.getRaceData(raceData, RDsData) 
    
     clinicalParsLst = [[ [ val for val in cp.values()]  for cp in rd['clinical_parameters'] ] for rd in RDsData]
     sexWeights      = [x[1] for x in [list(rd['sex_percentage'].values()) for rd in RDsData]]
     rdAgeGroupsLst  = list(cfg["rdAgeGroupsLst"])
-    usaNames        = MDutils.getUSAstateNames()
+    usaNames        = RDutils.getUSAstateNames()
     sexlabels       = list(cfg["sexLabels"])
     raceLabels      = list(cfg["raceLabels"])
     raceNamesLst    = [x.split(",")[0] for x in list(RDsData[0]["race_percentage"]["races"].keys())]
@@ -346,7 +346,7 @@ def getAllEvaluation(cfgPath):
         resultFilePath = os.path.join(resultsRDpath,fnm,RDFileNamesLst[i]+"_"+ fnm+".csv")
 
         # Read the result file and get its statistics
-        maxUSAAge, dataLabels, rdFinalData =  MDutils.readingCSVdata(resultFilePath, 0)
+        maxUSAAge, dataLabels, rdFinalData =  RDutils.readingCSVdata(resultFilePath, 0)
 
         totalNumberOfPatients   = round(sum([ (x *  y) for x,y in zip(prevalenceRaceLst[i], racePopulations)]))  
         numberOfPatientsStatesRace    = [ int(sum([(x *  y) for x,y in zip(prevalenceRaceLst[i], racePopulation)]))  for racePopulation in racePopulationsSt ]
