@@ -638,7 +638,7 @@ def getAllSummeryEvaluation(RDNames, resultPaths, outputPath):
     writeLatexTables(latexTables, outputPath)
 
 
-# If this script is called directly
+# Main script execution
 if __name__ == "__main__":
     # testing 
     if len(sys.argv) > 1:
