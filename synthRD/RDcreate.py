@@ -105,7 +105,7 @@ def getStatePatients(i,s,st, usaAgeSexGroupData, patentsCount, deathRates,number
             # femaleCount / femaleCount+maleCount
             sexWeightAges   = [round(( usaAgeSexGroupData[1][s][g]/( usaAgeSexGroupData[1][s][g]+ usaAgeSexGroupData[0][s][g]))*100) for g in range(len(rdAgeGroupsLst))]
             totalSexWeight  = [int(round( sexWeight * rdSexWeight + sexWeightAges[g]  * (1-rdSexWeight) )) for g in range(len(rdAgeGroupsLst))]
-            # create sex distribution for this age group of this state 
+            # Create sex distribution for this age group of this state 
             sexDist = [RDutils.getGroupDistriution(['f','m'], [totalSexWeight[g], 100-totalSexWeight[g]]) for g in range(len(rdAgeGroupsLst))]
 
             # Get death rate distribution for the state
