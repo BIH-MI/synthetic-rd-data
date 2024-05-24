@@ -164,7 +164,7 @@ def createSyntheticDatasets(cfg, RDsData, raceData, usaAgeSexData, usaAgeSexGrou
    # will be used to compute contribution of each state
    total_USA_Population_From_Age  = sum(statePopulations) 
 
-   raceWeights, total_USA_Population_From_Race, prevalenceRaceLst, racePopulations, racePopulationsSt  = MDutils.getRaceData(raceData, RDsData) 
+   raceWeights, total_USA_Population_From_Race, prevalenceRaceLst, racePopulations, racePopulationsSt  = RDutils.getRaceData(raceData, RDsData) 
 
    ## Note, there is a small error e.g. 
    ## age: 331448970,  race: 331449281, diff = 311   
