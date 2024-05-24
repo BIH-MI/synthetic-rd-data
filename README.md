@@ -2,7 +2,7 @@
 
 SynthRD is a Python tool for generating synthetic patient data to support software development and evaluations in rare disease research. The method leverages publicly available statistics and correlations to generate synthetic records.
 
-![](https://github.com/BIH-MI/synthetic-rd-data/blob/main/resources/RDsStats.png)
+![](https://github.com/BIH-MI/synthetic-rd-data/blob/main/resources/RDsStats_v5_gray.png)
 
 This repository contains code to use the tool for generating three [synthetic datasets](https://github.com/BIH-MI/synthetic-rd-data/tree/main/RDdata/result) for three popular rare diseases i.e. [Sickle Cell Disease](https://en.wikipedia.org/wiki/Sickle_cell_disease) (SCD), [Cystic Fibrosis](https://en.wikipedia.org/wiki/Cystic_fibrosis) (CF), and [Duchenne Muscular Dystrophy](https://en.wikipedia.org/wiki/Duchenne_muscular_dystrophy) (DMD). The datasets contain demographic data and selected clinical parameters.
 
@@ -68,6 +68,7 @@ Run the example script to start the data generation process.
 - **Downloaded US Census files:** `datasets` folder.
 - **Generated synthetic datasets:** `output` folder.
 
+_You can find three generated example files here: [Example files](https://github.com/BIH-MI/synthetic-rd-data/blob/main/output)._
 
 ## Extending the code
 
