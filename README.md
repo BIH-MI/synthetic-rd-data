@@ -18,7 +18,7 @@ This repository contains code to use the tool for generating three [synthetic da
                 │       └── scd_patients_all_100403.csv
                 ├── config: configuration files
                 │   ├── configUSA.json
-                │   └── MDsDataUSA.json
+                │   └── RDsDataUSA.json
                 ├── datasets: All downloaded census and preprocessed files will be saved here
                 │       ├── map: required for map charts
                 ├── output: All generated datasets will be saved here when run the tool 
