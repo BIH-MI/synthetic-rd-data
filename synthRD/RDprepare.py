@@ -9,7 +9,7 @@ import csv, json, sys, os, time
 import numpy as np
 from scipy.optimize import minimize
 
-from synthRD import RDutils, RDcharts
+from synthMD import MDutils, MDcharts
 
 # Function to read race data from a CSV file and restructure it
 def getRaceData(cfg, raceDataFilePath):
@@ -237,8 +237,8 @@ def getFixAgeSexData(ageSexData=None, maxAge=None, fnmPath=None, usaAgeSexDataFi
             optimizationError.append([errCount,errPercentage])
             fnm1 = os.path.join("datasets","usa","chart_usa-2020-states-age-sex-"+catlabels[c]+".png")
             fnm2 = os.path.join("datasets","usa","chart_usa-2020-states-age-sex-"+catlabels[c]+"_ext.png")
-            RDcharts.plotData(Y0, figTitle=catlabels[c]+" Age Before", XticksLabelsLst=None, isPercentageOutput=None, doShow=0, chartFnmPath=fnm1)
-            RDcharts.plotData(Y1, figTitle=catlabels[c]+" Age After, error count: "+str(errCount)+" error: "+errPercentage+"%", XticksLabelsLst=None, isPercentageOutput=None,  doShow=0, chartFnmPath=fnm2)
+            MDcharts.plotData(Y0, figTitle=catlabels[c]+" Age Before", XticksLabelsLst=None, isPercentageOutput=None, doShow=0, chartFnmPath=fnm1)
+            MDcharts.plotData(Y1, figTitle=catlabels[c]+" Age After, error count: "+str(errCount)+" error: "+errPercentage+"%", XticksLabelsLst=None, isPercentageOutput=None,  doShow=0, chartFnmPath=fnm2)
         
     else:
         # Read the file and return the data:
@@ -265,7 +265,7 @@ def getGroupedAgeSexData(ageSexData=None, rdsAgeGroups=None, maxAge=None, usaAge
                 cStAge = st[2:]
                 cState = [st[0],st[1]]
                 for i,lbl in enumerate(rdsAgeGroups): # for each age group
-                    ageStart, ageEnd = RDutils.getAgeRangeFromAgeGroup(i, maxAge)
+                    ageStart, ageEnd = MDutils.getAgeRangeFromAgeGroup(i, maxAge)
                     # print("a,b    : ", ageStart,ageEnd)
                     # find population of this age group
                     sumAgeGroup = 0
@@ -280,7 +280,7 @@ def getGroupedAgeSexData(ageSexData=None, rdsAgeGroups=None, maxAge=None, usaAge
             groupedAgeSexData.append(cStates)
                 
        ## Save the result to csv files
-       statesIDs, statesSName, statesLName =  RDutils.getUSAstateNames()
+       statesIDs, statesSName, statesLName =  MDutils.getUSAstateNames()
        for c in range(3):
            csv.writer(open(groupedFilePaths[c], 'w', newline='')).writerows(groupedAgeSexData[c])
           
@@ -288,7 +288,7 @@ def getGroupedAgeSexData(ageSexData=None, rdsAgeGroups=None, maxAge=None, usaAge
            Y = [ sum(groupedAgeSexData[c][s][2:]) for s in range(len(groupedAgeSexData[c])) ]
            fnm = os.path.join("datasets","usa","chart_usa-2020-states-age-sex-"+catlabels[c]+"_state.png")
            figTitle = catlabels[c]+" population per state"
-           RDcharts.plotData(Y, figTitle=figTitle, XticksLabelsLst=statesSName, isPercentageOutput=None, doShow=0, chartFnmPath=fnm)
+           MDcharts.plotData(Y, figTitle=figTitle, XticksLabelsLst=statesSName, isPercentageOutput=None, doShow=0, chartFnmPath=fnm)
            print("------------------- Create Maps    -------------------------")        
            # Initialize an empty dictionary to store the counts of persons per state
            state_counts = {state: val for state, val in zip(statesLName,Y)}
@@ -306,12 +306,12 @@ def getGroupedAgeSexData(ageSexData=None, rdsAgeGroups=None, maxAge=None, usaAge
                     "mapName":"NAME",
                     "dataName":"state"
                 }
-           RDcharts.plotMap(state_counts, cfg)
+           MDcharts.plotMap(state_counts, cfg)
 
            Y = [sum(groupedAgeSexData[c][s][g+2] for s in range(len(groupedAgeSexData[c]))) for g in range(len(groupedAgeSexData[c][0])-2)]
            print("Total age Groups Populations "+catlabels[c],Y)
            fnm = os.path.join("datasets","usa","chart_usa-2020-states-age-sex-"+catlabels[c]+"_grp.png")
-           RDcharts.plotData(Y, figTitle=catlabels[c]+" Age grouped", XticksLabelsLst=rdsAgeGroups, isPercentageOutput=None, doShow=0, chartFnmPath=fnm)
+           MDcharts.plotData(Y, figTitle=catlabels[c]+" Age grouped", XticksLabelsLst=rdsAgeGroups, isPercentageOutput=None, doShow=0, chartFnmPath=fnm)
     else:
         print("Grouped: usaAgeSexData files exist: ", groupedFilePaths[0])
         groupedAgeSexData = [ [ [int(x[0]), x[1]] +[int(y) for y in x[2:] ] for x in [row 
