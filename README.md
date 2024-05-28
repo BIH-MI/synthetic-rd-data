@@ -8,7 +8,7 @@ This repository contains code to use the tool for generating three [synthetic da
 
 ## Repository Structure
 
-                ├── MDdata: Contains our results and copy of all original downloaded and used files 
+                ├── RDdata: Contains our results and copy of all original downloaded and used files 
                 │   ├── census
                 │   │   ├── map
                 │   │   └── usaAge2020-2021
