@@ -48,8 +48,8 @@ if __name__ == "__main__":
 
    if doCreate:
       # Create synthetic datasets
-      cfg, MDsData, raceData, usaAgeSexData, usaAgeSexGroupData, paths = MDutils.readInputFiles(cfgPath)  
-      MDcreate.createSyntheticDatasets(cfg, MDsData, raceData, usaAgeSexData, usaAgeSexGroupData, paths,  doEvaluation= 0)
+      cfg, RDsData, raceData, usaAgeSexData, usaAgeSexGroupData, paths = MDutils.readInputFiles(cfgPath)  
+      MDcreate.createSyntheticDatasets(cfg, RDsData, raceData, usaAgeSexData, usaAgeSexGroupData, paths,  doEvaluation= 0)
 
    # Evaluate the synthetic datasets
    # Note evaluation can be done faster with createSyntheticDatasets function above 
