@@ -17,7 +17,7 @@
 import os, sys, csv, json, requests, urllib, time
 import pandas as pd
 
-from synthRD import RDutils
+from synthMD import MDutils
 
 ## -------------------------  Get Race populations using USA census API
 # Function to get USA census race data using the Census API
@@ -131,7 +131,7 @@ def getUSACensusData(censusAPIKey, datasetFolder, censusQueryYear=None, censusXL
 
     # Get USA state IDs and names
     # IDs and short names are useful to work with API and other libs
-    usaFIPS, usaSNames, usaLNames  = RDutils.getUSAstateNames() 
+    usaFIPS, usaSNames, usaLNames  = MDutils.getUSAstateNames() 
  
     if getRaceData and not os.path.exists(race_data_path):        
        getUSACensusDataRace(censusAPIKey,censusQueryYear, censusXLSXYear, forceDownload,usaFIPS,race_data_path,

@@ -5,4 +5,4 @@
       
 # Main script execution
 if __name__ == "__main__":
-   print("-------------------  SynthRD")
+   print("-------------------  SynthMD")
